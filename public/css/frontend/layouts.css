@@ -1,0 +1,27 @@
+.deleteTag{
+    background-color: rgb(255, 205, 205);
+    padding: 0.25rem 2rem;
+    color: red;
+    border: 1px red solid;
+    border-radius: 1rem;
+}
+
+.definedTag{
+    background-color: rgb(205, 255, 213);
+    padding: 0.25rem 2rem;
+    color: green;
+    border: 1px green solid;
+    border-radius: 1rem;
+}
+
+.progressTag{
+    background-color: rgb(255, 241, 205);
+    padding: 0.25rem 2rem;
+    color: orange;
+    border: 1px orange solid;
+    border-radius: 1rem;
+}
+
+.invalid-select {
+    border: 1px solid red;
+}

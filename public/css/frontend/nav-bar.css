@@ -1,0 +1,11 @@
+/* .nav-link{
+    transition: all 0.2s;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid rgb(52, 52, 232);
+} */
+
+.active{
+  border-bottom: 2px solid #C5C09A;
+}

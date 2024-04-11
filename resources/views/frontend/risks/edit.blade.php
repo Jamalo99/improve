@@ -1,0 +1,70 @@
+@extends('layouts.frontend')
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    {{ trans('global.edit') }} {{ trans('cruds.risk.title_singular') }}
+                </div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route("frontend.risks.update", [$risk->id]) }}" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
+                        <div class="form-group">
+                            <label class="required" for="control_key_id">{{ trans('cruds.risk.fields.control_key') }}</label>
+                            <select class="form-control select2" name="control_key_id" id="control_key_id" required>
+                                @foreach($control_keys as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('control_key_id') ? old('control_key_id') : $risk->control_key->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('control_key'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('control_key') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.risk.fields.control_key_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="probability_id">{{ trans('cruds.risk.fields.probability') }}</label>
+                            <select class="form-control select2" name="probability_id" id="probability_id">
+                                @foreach($probabilities as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('probability_id') ? old('probability_id') : $risk->probability->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('probability'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('probability') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.risk.fields.probability_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="impact_id">{{ trans('cruds.risk.fields.impact') }}</label>
+                            <select class="form-control select2" name="impact_id" id="impact_id">
+                                @foreach($impacts as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('impact_id') ? old('impact_id') : $risk->impact->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('impact'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('impact') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.risk.fields.impact_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-danger" type="submit">
+                                {{ trans('global.save') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection
